@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>Sửa sản phẩm</title>
@@ -27,7 +28,7 @@
         </tr>
         <tr>
             <td>Ngày tạo</td>
-            <td><input type="date" name="created" ></td>
+            <td><input type="date" name="created" value="<fmt:formatDate value="${updateProduct.created}" pattern="yyyy-MM-dd"/>"> </td>
         </tr>
         <tr>
             <td>Batch</td>

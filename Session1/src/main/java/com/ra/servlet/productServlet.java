@@ -55,7 +55,7 @@ public class productServlet extends HttpServlet {
             String productName = req.getParameter("productName");
             String manufacturer = req.getParameter("manufacturer");
             String createdString = req.getParameter("created");
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date createdDate = null;
             try {
                 createdDate = formatter.parse(createdString);
