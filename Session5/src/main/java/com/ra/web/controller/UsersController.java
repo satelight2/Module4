@@ -2,6 +2,7 @@ package com.ra.web.controller;
 
 import com.ra.web.model.UserRequest;
 import com.ra.web.model.entity.User;
+import com.ra.web.repository.UserERepository;
 import com.ra.web.service.FileStorageService;
 import com.ra.web.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -16,19 +17,25 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/users")
 public class UsersController {
+    private UserERepository userERepository;
     private UserService userService;
     private ModelMapper modelMapper;
     private FileStorageService storageService;
 
-    public UsersController(UserService  userService, ModelMapper modelMapper, FileStorageService storageService) {
+    public UsersController(UserService  userService, ModelMapper modelMapper, FileStorageService storageService,UserERepository userERepository) {
         this.userService = userService;
         this.modelMapper = modelMapper;
         this.storageService = storageService;
+        this.userERepository = userERepository;
+    }
+    @GetMapping("/login")
+    public String login(){
+        return "users/login";
     }
 
     @GetMapping(value = {"", "/index"})
     public String index(Model model) {
-        model.addAttribute("data", userService.findAll());
+        model.addAttribute("data", userERepository.findAll());
         return "users/index";
     }
 
